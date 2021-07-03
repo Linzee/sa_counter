@@ -1,10 +1,17 @@
 <input id="sa_input" />
 <button id="sa_submit">Count</button>
-<div id="results">
-  <p>Length: <span class="len"></span></p>
-  <p>SA: <span class="sa"></span></p>
-  <p>ERR: <span class="err"></span></p>
-</div>
+<table id="results">
+  <tr>
+    <th>SA</th>
+    <th>Length</th>
+    <th>ERR</th>
+  </tr>
+  <tr>
+    <td class="sa"></td>
+    <td class="len"></td>
+    <td class="err"></td>
+  </tr>
+</table>
 <script>
   document.querySelector("#sa_submit").onclick = () => {
     let input = document.querySelector("#sa_input").value;
