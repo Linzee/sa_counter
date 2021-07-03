@@ -1,0 +1,40 @@
+<input id="sa_input" />
+<button id="sa_submit">Count</button>
+<div id="results">
+  <p>Length: <span class="len"></span></p>
+  <p>SA: <span class="sa"></span></p>
+  <p>ERR: <span class="err"></span></p>
+</div>
+<script>
+  document.querySelector("#sa_submit").onclick = () => {
+    let input = document.querySelector("#sa_input").value;
+    let sa = 0;
+    let err = 0;
+
+    if (input.length < 3) {
+      return;
+    }
+
+    for (i=0; i<input.length-2; i++) {
+      let triple = input.slice(i, i+3);
+      if (triple[0] != triple[1] && triple[1] != triple[2] && triple[0] != triple[2]) {
+        sa++;
+      }
+    }
+
+    for (i=0; i<input.length; i++) {
+      let local_err = 1;
+      if (i-2 >= 0 && input[i] == input[i-2]) {
+        local_err = 2;
+      }
+      if (i-1 >= 0 && input[i] == input[i-1]) {
+        local_err = 3;
+      }
+      err += local_err;
+    }
+
+    document.querySelector("#results .len").textContent = input.length;
+    document.querySelector("#results .sa").textContent = sa;
+    document.querySelector("#results .err").textContent = err / input.length;
+  }
+</script>
